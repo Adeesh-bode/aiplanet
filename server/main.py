@@ -8,18 +8,13 @@ from pdf_processor import extract_text_from_pdf, process_question
 
 app = FastAPI()
 
-# CORS configuration
-origins = [
-    "http://localhost:5173",  # Replace with your React frontend URL during development
-    # Add more origins if needed for different environments or domains
-]
-
+# CORS configuration to allow all origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  # Allow all origins
     allow_credentials=True,
     allow_methods=["*"],  # Allow all methods
-    allow_headers=["*"],
+    allow_headers=["*"],  # Allow all headers
 )
 
 # Directory to store uploaded PDF files

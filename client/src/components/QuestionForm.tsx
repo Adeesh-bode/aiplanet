@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 interface QuestionFormProps {
-    onAnswer: (answer: string) => void;
+    onAnswer: (data: string) => void; // Expect a string, not an object
 }
 
 const QuestionForm: React.FC<QuestionFormProps> = ({ onAnswer }) => {
@@ -11,11 +11,16 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ onAnswer }) => {
 
     const handleQuestionSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/ask/', {
-                pdf_filename: pdfFilename,
-                question: question
+            const response = await axios.post('http://localhost:8000/ask/', null, {
+                params: {
+                    pdf_filename: pdfFilename,
+                    question: question
+                },
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             });
-            onAnswer(response.data.answer);
+            onAnswer(response.data.answer); // Pass only the answer text
         } catch (error) {
             console.error('Error asking question:', error);
         }
@@ -25,15 +30,15 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ onAnswer }) => {
         <div>
             <input
                 type="text"
-                placeholder="PDF Filename"
                 value={pdfFilename}
                 onChange={(e) => setPdfFilename(e.target.value)}
+                placeholder="Enter PDF filename"
             />
             <input
                 type="text"
-                placeholder="Your Question"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
+                placeholder="Enter your question"
             />
             <button onClick={handleQuestionSubmit}>Ask Question</button>
         </div>
