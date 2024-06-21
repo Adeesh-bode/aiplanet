@@ -16,6 +16,7 @@ def extract_text_from_pdf(pdf_path):
     for page_num in range(len(pdf_document)):
         page = pdf_document.load_page(page_num)
         text += page.get_text()
+    # print(text)
     return text
 
 
@@ -37,4 +38,6 @@ def process_question(pdf_text, question):
     # Use the question-answering pipeline to find the answer
     result = qa_pipeline(question=question, context=pdf_text)
     answer = result['answer']
+    print(f"Question: {question}")
+    print(f"Answer: {answer}")
     return answer
