@@ -1,0 +1,33 @@
+# Client logs
+client/logs
+client/*.log
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/pnpm-debug.log*
+client/lerna-debug.log*
+
+# Client Node.js modules and build directories
+client/node_modules
+client/dist
+client/dist-ssr
+client/*.local
+
+# Client editor directories and files
+client/.vscode/*
+!client/.vscode/extensions.json
+client/.idea
+client/.DS_Store
+client/*.suo
+client/*.ntvs*
+client/*.njsproj
+client/*.sln
+client/*.sw?
+
+# Server Python cache and environment files
+server/__pycache__/
+server/*.pyc
+server/*.pyo
+server/*.pyd
+server/.env
+server/.venv
