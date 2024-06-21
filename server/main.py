@@ -45,7 +45,6 @@ async def ask_question(pdf_filename: str = Query(...), question: str = Query(...
     
     return {"answer": answer}
 
-
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the PDF Q&A application!"}
