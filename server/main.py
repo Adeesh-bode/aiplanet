@@ -1,11 +1,26 @@
 import os
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 import shutil
 from pdf_processor import extract_text_from_pdf, process_question
 
 app = FastAPI()
+
+# CORS configuration
+origins = [
+    "http://localhost:5173",  # Replace with your React frontend URL during development
+    # Add more origins if needed for different environments or domains
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],
+)
 
 # Directory to store uploaded PDF files
 UPLOAD_DIRECTORY = "./uploaded_pdfs"
