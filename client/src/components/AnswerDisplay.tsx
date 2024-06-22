@@ -6,7 +6,7 @@ interface AnswerDisplayProps {
 
 const AnswerDisplay: React.FC<AnswerDisplayProps> = ({ answer }) => {
     return (
-        <div>
+        <div className='h-full w-full flex justify-center items-center'>
             <h3>Answer:</h3>
             <p>{answer}</p>
         </div>
