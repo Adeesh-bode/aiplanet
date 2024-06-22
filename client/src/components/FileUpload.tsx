@@ -4,13 +4,15 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
 
 
-import Logo from '../assets/aiplanet_logo.svg';
+import LogoLight from '../assets/aiplanet_logo_light.svg';
+import LogoDark from '../assets/aiplanet_logo_dark.svg';
 
 interface FileUploadProps {
     onUpload: (data: any) => void;
 }
 
 const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
+    const [isDarkMode, setIsDarkMode] = useState(true);
     const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
 
     const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,9 +42,12 @@ const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
     };
 
     return (
-        <div className='h-14 px-5 py-3 shadow shadow-bottom shadow-black flex justify-between'>
+        <div className='h-16 px-5 py-3 shadow shadow-bottom shadow-black flex justify-between'>
             <div className=''>
-                <img src={Logo} alt='ai planet logo' className='object-cover'/> 
+                {
+                    (isDarkMode)? (<img src={LogoDark} alt='ai planet logo' className='object-cover'/>): 
+                    (<img src={LogoLight} alt='ai planet logo' className='object-cover'/>)
+                }
             </div>
             <div className='flex justify-between gap-4'>
                 <div className='flex justify-between items-center gap-3'>
