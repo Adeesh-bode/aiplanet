@@ -1,0 +1,9 @@
+[build]
+command = "pip install -r api/requirements.txt -t ./functions && npm install netlify-cli -g"
+functions = "functions"
+publish = "dist"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
