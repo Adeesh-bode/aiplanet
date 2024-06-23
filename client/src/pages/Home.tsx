@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import FileUpload from '../components/FileUpload';
-import QuestionForm from '../components/QuestionForm';
+import QuestionForm from '../components/Question';
 import AnswerDisplay from '../components/AnswerDisplay';
 
 const Home: React.FC = () => {

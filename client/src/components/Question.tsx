@@ -3,12 +3,12 @@ import axios from 'axios';
 import { CiPaperplane } from "react-icons/ci";
 
 
-interface QuestionFormProps {
+interface QuestionProps {
     pdfFilename: string;
     onQuestionSubmit: (userQuestion: string, botAnswer: string) => void;
 }
 
-const QuestionForm: React.FC<QuestionFormProps> = ({ pdfFilename, onQuestionSubmit }) => {
+const Question: React.FC<QuestionProps> = ({ pdfFilename, onQuestionSubmit }) => {
     const [question, setQuestion] = useState<string>('');
 
     const handleQuestionSubmit = async () => {
@@ -48,4 +48,4 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ pdfFilename, onQuestionSubm
     );
 };
 
-export default QuestionForm;
+export default Question;
