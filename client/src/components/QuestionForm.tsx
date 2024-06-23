@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { IoPaperPlaneOutline } from "react-icons/io5";
+import { CiPaperplane } from "react-icons/ci";
 
 
 interface QuestionFormProps {
@@ -30,17 +30,20 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ pdfFilename, onQuestionSubm
     };
 
     return (
-        <div className='flex items-center p-4 border-t border-gray-300'>
+        <div className='w-full mb-7  flex justify-center items-center'>
+        <div className='relative w-4/5 flex justify-between items-center  border border-gray-300'>
             <input
                 type="text"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
                 placeholder="Enter your question"
-                className='flex-1 p-2 mr-2 border border-gray-300 rounded'
-            />
-            <button onClick={handleQuestionSubmit} className='bg-blue-500 text-white p-2 rounded'>
-                <IoPaperPlaneOutline />
+                className='text-xl flex-1 px-4 py-2  mr-2 border border-gray-300 rounded focus:outline-none border-none text-black'
+                >
+            </input>
+            <button onClick={handleQuestionSubmit} className='h-full absolute right-0 px-2  text-black rounded flex-center bg-white '>
+            <CiPaperplane color='black' size={30} />
             </button>
+        </div>
         </div>
     );
 };
