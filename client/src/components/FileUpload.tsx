@@ -33,7 +33,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
-                onUpload(filenames); // Pass array of filenames to parent component
+                onUpload(filenames); 
             } catch (error) {
                 console.error('Error uploading files:', error);
             }
@@ -45,26 +45,26 @@ const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
     };
 
     return (
-        <div className='h-16 px-5 py-3 shadow shadow-bottom shadow-black flex justify-between'>
-            <div className=' '>
+        <div className=' md:h-20 px-1 md:px-8 py-2 md:py-4 shadow shadow-bottom shadow-black flex  justify-between items-center'>
+            <div className=' w-20 md:w-28 flex-center'>
                 {
                     (isDarkMode)? (<img src={LogoDark} alt='ai planet logo' className='object-cover'/>): 
                     (<img src={LogoLight} alt='ai planet logo' className='object-cover'/>)
                 }
             </div>
-            <div className='flex justify-between gap-4'>
-                <div className='flex justify-between items-center gap-3 '>
+            <div className='flex justify-between items-center gap-1 md:gap-4 text-xs md:text-lg'>
+                <div className='w-28 md:w-fit flex  justify-between items-center gap-3 overflow-scroll md:overflow-hidden '>
                     {selectedFiles && selectedFiles.length > 0 && selectedFiles.length < 5 && (
                         Array.from(selectedFiles).map((file, index) => (
-                            <div key={index} className='w-fit flex justify-center items-center gap-2 border-r-2 pr-3 text-[#0FA958] '>
-                                <IoDocumentTextOutline className='' /> 
-                                <span>{file.name}</span>
+                            <div key={index} className='w-full sm:w-fit flex justify-center items-center gap-2 border-r-2 pr-3 text-[#0FA958]'>
+                                <IoDocumentTextOutline /> 
+                                <span className='truncate'>{file.name}</span>
                             </div>
                         ))
                     )}
                     {selectedFiles && selectedFiles.length > 4 && <div>Mutiple documents selected</div>}
                 </div>
-                <div className='flex justify-between items-center gap-3 '>
+                <div className='flex justify-between items-center gap-3 flex-center'>
                     <input
                         type="file"
                         multiple
@@ -72,9 +72,9 @@ const FileUpload: React.FC<FileUploadProps> = ({ onUpload }) => {
                         style={{ display: 'none' }}
                         id="fileInput"
                     />
-                    <button onClick={triggerFileInput} className='h-full border border-[#0FA958] py-3 px-1 flex justify-between gap-2  items-center'>
-                        <CiCirclePlus />
-                        <span>Upload Files</span>
+                    <button onClick={triggerFileInput} className=' rounded-lg md:rounded-none text-lg h-full border border-[#0FA958] py-1 md:py-2 px-1 md:px-4 flex justify-between gap-2 items-center'>
+                        <CiCirclePlus size={25} />
+                        <span className='hidden md:inline-block  '>Upload PDF</span>
                     </button>
                 </div>
             </div>

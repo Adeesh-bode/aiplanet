@@ -14,8 +14,8 @@ const App: React.FC = () => {
 
     return (
         <div>
-            <button onClick={toggleDarkMode} className=' absolute bottom-6 right-3 bg-primary p-3 rounded-full text-white '>
-                {isDarkMode ? <IoSunnyOutline size={35} /> : <GiNightSleep size={35} />}
+            <button onClick={toggleDarkMode} className=' absolute bottom-20 md:bottom-6 right-3 bg-primary p-3 rounded-full text-white '>
+                {isDarkMode ? <IoSunnyOutline size={35} className='h-5 w-5 md:h-full ' /> : <GiNightSleep size={35} className='h-5 w-5 md:h-full ' />}
             </button>
             <BrowserRouter>
                 <Routes>
